@@ -44,6 +44,7 @@ pipeline {
     }
     post {
         always {
+            junit testResults: '**/target/surefire-reports/TEST-*.xml'
             recordIssues enabledForFailure: true, tool: checkStyle()
             recordIssues enabledForFailure: true, tool: spotBugs()
         }
