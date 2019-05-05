@@ -32,10 +32,15 @@ pipeline {
                 script {
                     dir('.') {
                         sh 'echo "Analysis stage"'
-                        sh 'mvn clean package checkstyle:checkstyle spotbugs:spotbugs'
                     }
                 }
             }
+        }
+    }
+    post {
+        always {
+            recordIssues enabledForFailure: true, tool: checkStyle()
+            recordIssues enabledForFailure: true, tool: spotBugs()
         }
     }
 
