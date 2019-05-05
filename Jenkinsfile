@@ -33,8 +33,8 @@ pipeline {
                     dir('.') {
                         sh 'echo "Analysis stage"'
                         stepcounter settings: [
-                            [encoding: 'UTF-8', filePattern: 'src/main/**/*.java', filePatternExclude: '', key: 'Java'],
-                            [encoding: 'UTF-8', filePattern: 'src/test/**/*.java', filePatternExclude: 'src/test/java/sample/*.java', key: 'TestCode']
+                            [encoding: 'UTF-8', filePattern: 'src/main/java/**/*.java', key: 'Java'],
+                            [encoding: 'UTF-8', filePattern: 'src/test/java/**/*.java', key: 'TestCode']
                         ]
                     }
                 }
