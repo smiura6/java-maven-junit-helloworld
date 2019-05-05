@@ -37,6 +37,8 @@ pipeline {
                             [encoding: 'UTF-8', filePattern: 'src/test/java/**/*.java', key: 'TestCode']
                         ]
                         archiveArtifacts "stepcount.xls"
+
+                        jacoco classPattern: '**/target/classes', execPattern: '**/target/**.exec'
                     }
                 }
             }
@@ -44,7 +46,6 @@ pipeline {
     }
     post {
         always {
-            junit testResults: '**/target/surefire-reports/TEST-*.xml'
             recordIssues enabledForFailure: true, tool: checkStyle()
             recordIssues enabledForFailure: true, tool: spotBugs()
         }
