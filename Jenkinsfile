@@ -32,6 +32,7 @@ pipeline {
                 script {
                     dir('.') {
                         sh 'echo "Analysis stage"'
+                        sh 'mvn --batch-mode -V -U -e checkstyle:checkstyle spotbugs:spotbugs'
                     }
                 }
             }
